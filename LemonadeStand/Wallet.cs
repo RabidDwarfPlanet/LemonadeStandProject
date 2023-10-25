@@ -19,9 +19,9 @@ namespace LemonadeStand
         }
 
         //constructor (SPAWNER)
-        public Wallet()
+        public Wallet(double money)
         {
-            money = 20.00;
+            this.money = money;
         }
 
         //Member Methods (CAN DO)

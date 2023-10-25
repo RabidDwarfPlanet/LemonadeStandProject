@@ -42,7 +42,7 @@ namespace LemonadeStand
                 daysWeather = sunny;
             }
 
-            daysTemp = Math.Round(rand.Next(70, 90) * daysWeather.tempModifier);
+            daysTemp = Math.Round(rand.Next(70, 91) * daysWeather.tempModifier);
         }
 
         public void forecast()

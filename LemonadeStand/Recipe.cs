@@ -32,6 +32,24 @@ namespace LemonadeStand
             Console.WriteLine($"Your recipe currently consists of:\n{numberOfLemons} lemons per pitcher\n{numberOfSugarCubes} sugar cubes per pitcher\n{numberOfIceCubes} ice cubes per pitcher");
         }
 
+        public void SetPrice()
+        {
+            bool isNum = false;
+            double value;
+            Console.WriteLine("How much would you like to sell each cup of lemonade for?");
+            retryPrice:
+            isNum = double.TryParse(Console.ReadLine(), out value);
+            if (isNum == true)
+            {
+                this.price = value;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a number");
+                goto retryPrice;
+            }
+        }
+
         public void ChangeRecipePrompt()
         {
             bool firstChange = true;
@@ -78,7 +96,7 @@ namespace LemonadeStand
                     isNum = int.TryParse(Console.ReadLine(), out value);
                     if (isNum == true)
                     {
-                        this.numberOfSugarCubes = value;
+                        this.numberOfLemons = value;
                     }
                     else
                     {
@@ -93,7 +111,7 @@ namespace LemonadeStand
                     isNum = int.TryParse(Console.ReadLine(), out value);
                     if (isNum == true)
                     {
-                        this.numberOfSugarCubes = value;
+                        this.numberOfIceCubes = value;
                     }
                     else
                     {

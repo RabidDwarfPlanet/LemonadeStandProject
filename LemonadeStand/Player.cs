@@ -19,7 +19,7 @@ namespace LemonadeStand
         {
             name = null;
             inventory = new Inventory();
-            wallet = new Wallet();
+            wallet = new Wallet(20);
             recipe = new Recipe();
         }
 

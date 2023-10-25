@@ -13,7 +13,7 @@ namespace LemonadeStand
         Store store = new Store();
         WeatherSystem weather = new WeatherSystem();
         Player player = new Player();
-        Recipe recipe = new Recipe();
+        List<Player> daysCustomers = new List<Player>();
 
         public Game()
         {
@@ -36,6 +36,13 @@ namespace LemonadeStand
             player.name = Console.ReadLine();
         }
 
+        public void GenerateCustomers()
+        {
+
+        }
+
+
+
         public void DayCycle()
         {
             while (day <= 7)
@@ -47,7 +54,9 @@ namespace LemonadeStand
                 //Console.WriteLine("\nPress any key to continue");
                 //Console.ReadKey();
                 //store.SalesPrompt(player);
-                recipe.ChangeRecipePrompt();
+                //player.recipe.ChangeRecipePrompt();
+                player.recipe.SetPrice();
+
 
             }
         }
