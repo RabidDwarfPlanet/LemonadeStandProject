@@ -13,6 +13,7 @@ namespace LemonadeStand
         Store store = new Store();
         WeatherSystem weather = new WeatherSystem();
         Player player = new Player();
+        Recipe recipe = new Recipe();
 
         public Game()
         {
@@ -39,13 +40,14 @@ namespace LemonadeStand
         {
             while (day <= 7)
             {
-                Console.Clear();
-                weather.setWeather();
-                Console.WriteLine($"Start of day {day}");
-                weather.forecast();
-                store.DisplayStorePrices(player);
-                store.SalesPrompt(player);
-                Console.ReadKey();
+                //Console.Clear();
+                //weather.setWeather();
+                //Console.WriteLine($"Start of day {day}");
+                //weather.forecast();
+                //Console.WriteLine("\nPress any key to continue");
+                //Console.ReadKey();
+                //store.SalesPrompt(player);
+                recipe.ChangeRecipePrompt();
 
             }
         }
