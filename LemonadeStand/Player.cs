@@ -9,6 +9,7 @@ namespace LemonadeStand
     class Player
     {
         // member variables (HAS A)
+        public string name;
         public Inventory inventory;
         public Wallet wallet;
         public Recipe recipe;
@@ -16,6 +17,7 @@ namespace LemonadeStand
         // constructor (SPAWNER)
         public Player()
         {
+            name = null;
             inventory = new Inventory();
             wallet = new Wallet();
             recipe = new Recipe();
