@@ -34,20 +34,15 @@ namespace LemonadeStand
 
         public void SetPrice()
         {
+            double value = 0;
             bool isNum = false;
-            double value;
             Console.WriteLine("How much would you like to sell each cup of lemonade for?");
-            retryPrice:
-            isNum = double.TryParse(Console.ReadLine(), out value);
-            if (isNum == true)
-            {
-                this.price = value;
-            }
-            else
+            while (isNum == false)
             {
                 Console.WriteLine("Please enter a number");
-                goto retryPrice;
+                isNum = double.TryParse(Console.ReadLine(), out value);
             }
+            this.price = value;
         }
 
         public void ChangeRecipePrompt()
@@ -92,48 +87,33 @@ namespace LemonadeStand
                 case "lemons":
                 case "lemon":
                     Console.WriteLine("How many lemons would you like to use per pitcher?");
-                    retryLem:
-                    isNum = int.TryParse(Console.ReadLine(), out value);
-                    if (isNum == true)
-                    {
-                        this.numberOfLemons = value;
-                    }
-                    else
+                    while (isNum == false)
                     {
                         Console.WriteLine("Please enter a number");
-                        goto retryLem;
+                        isNum = int.TryParse(Console.ReadLine(), out value);
                     }
+                    this.numberOfLemons = value;
                     break;
                 case "ice":
                 case "ice cubes":
                     Console.WriteLine("How many ice cubes would you like to put in each cup");
-                retryIce:
-                    isNum = int.TryParse(Console.ReadLine(), out value);
-                    if (isNum == true)
-                    {
-                        this.numberOfIceCubes = value;
-                    }
-                    else
+                    while (isNum == false)
                     {
                         Console.WriteLine("Please enter a number");
-                        goto retryIce;
+                        isNum = int.TryParse(Console.ReadLine(), out value);
                     }
+                    this.numberOfIceCubes = value;
                     break;
                 case "sugar":
                 case "sugar cubes":
                     Console.WriteLine("How many sugar cubes would you like to use per pitcher");
-                    retrySug:
-                    isNum = int.TryParse(Console.ReadLine(), out value);
-                    if(isNum == true)
-                    {
-                        this.numberOfSugarCubes = value;
-                    }
-                    else
+                    while (isNum == false)
                     {
                         Console.WriteLine("Please enter a number");
-                        goto retrySug;
+                        isNum = int.TryParse(Console.ReadLine(), out value);
                     }
-                    break;
+                    this.numberOfSugarCubes = value;
+                    break; 
                 default:
                     break;
             }

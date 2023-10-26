@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand.Items
 {
-    internal class Lemonade
+    internal class Lemonade : Item
     {
+        // member variables (HAS A)
+
+        // constructor (SPAWNER)
+        public Lemonade()
+        {
+            name = "lemonade";
+        }
+
+        // member methods (CAN DO)
     }
 }

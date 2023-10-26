@@ -13,6 +13,7 @@ namespace LemonadeStand
         public Inventory inventory;
         public Wallet wallet;
         public Recipe recipe;
+        public List<Item> pitcher = new List<Item>();
 
         // constructor (SPAWNER)
         public Player()
