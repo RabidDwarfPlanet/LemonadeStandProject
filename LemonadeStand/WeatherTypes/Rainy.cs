@@ -12,7 +12,7 @@ namespace LemonadeStand.WeatherTypes
         {
             this.typeOfWeather = "rainy";
             this.weatherLemonadeDesireModifier = 0.8;
-            this.weatherSpawnModifier = 0.5;
+            this.weatherSpawnModifier = 0.75;
             this.tempModifier = 0.75;
         }
 

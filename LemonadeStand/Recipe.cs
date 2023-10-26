@@ -22,7 +22,7 @@ namespace LemonadeStand
         {
             numberOfLemons = 2;
             numberOfSugarCubes = 4;
-            numberOfIceCubes = 10;
+            numberOfIceCubes = 4;
             price = 1;
         }
 
