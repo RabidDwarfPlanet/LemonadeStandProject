@@ -19,10 +19,10 @@ namespace LemonadeStand
         // constructor (SPAWNER)
         public Store()
         {
-            pricePerLemon = .5;
-            pricePerSugarCube = .1;
+            pricePerLemon = .9;
+            pricePerSugarCube = .03;
             pricePerIceCube = .01;
-            pricePerCup = .25;
+            pricePerCup = .15;
         }
 
         // member methods (CAN DO)

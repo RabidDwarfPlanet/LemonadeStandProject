@@ -21,12 +21,12 @@ namespace LemonadeStand
         public Player playerTwo;
         List<Customer> daysCustomers = new List<Customer>();
         Random r = new Random();
-        int milliseconds = 1000;
+        int milliseconds = 500;
         
 
         public Game()
         {
-            day = 7;
+            day = 1;
         }
 
         
