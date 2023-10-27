@@ -10,7 +10,7 @@
             game.welcomeMessage();
             game.NamePlayer();
             game.DayCycle();
-            
+            game.EndGame();
             
         }
     }

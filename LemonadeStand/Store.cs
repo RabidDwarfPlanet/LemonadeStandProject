@@ -53,46 +53,61 @@ namespace LemonadeStand
         public void SalesPrompt(Player player)
         {
             bool madeSale = false;
-            moreSales: 
-            Console.Clear();
-            DisplayStorePrices(player);
-            if (madeSale == false)
+            bool bankrupt = false;
+            while (bankrupt == false)
             {
-                Console.WriteLine("\nWhat would you like to purchase (Type LEAVE to leave the store)");
-            }
-            else
-            {
-                Console.WriteLine("\nWould you like to purchase anything else (Type LEAVE to leave the store)");
-            }
-            retry:
-            string itemToBuy = Console.ReadLine();
-            switch (itemToBuy.ToLower())
-            {
-                case "ice":
-                case "ice cubes":
-                    SellIceCubes(player);
-                    madeSale = true;
-                    goto moreSales;
-                case "cups":
-                    SellCups(player);
-                    madeSale = true;
-                    goto moreSales;
-                case "sugar":
-                case "sugar cubes":
-                    SellSugarCubes(player);
-                    madeSale = true;
-                    goto moreSales;
-                case "lemons":
-                case "lemon":
-                    SellLemons(player);
-                    madeSale = true;
-                    goto moreSales;
-                case "leave":
+                if(player.wallet.Money == 0 && player.inventory.sugarCubes.Count == 0 || player.wallet.Money == 0 && player.inventory.cups.Count == 0 || player.wallet.Money == 0 && player.inventory.iceCubes.Count == 0 || player.wallet.Money == 0 && player.inventory.lemons.Count == 0)
+                {
+                    bankrupt = true;
                     break;
-                default:
-                    Console.WriteLine("We dont carry that here, please select something that we have in stock");
-                    goto retry;
+                }
+                Console.Clear();
+                DisplayStorePrices(player);
+                if (madeSale == false)
+                {
+                    Console.WriteLine("\nWhat would you like to purchase (Type LEAVE to leave the store)");
+                }
+                else
+                {
+                    Console.WriteLine("\nWould you like to purchase anything else (Type LEAVE to leave the store)");
+                }
+                madeSale = false;
+                while(madeSale == false)
+                {
+                    string itemToBuy = Console.ReadLine();
+                    switch (itemToBuy.ToLower())
+                    {
+                        case "ice":
+                        case "ice cubes":
+                            SellIceCubes(player);
+                            madeSale = true;
+                            break;
+                        case "cups":
+                            SellCups(player);
+                            madeSale = true;
+                            break;
+                        case "sugar":
+                        case "sugar cubes":
+                            SellSugarCubes(player);
+                            madeSale = true;
+                            break;
+                        case "lemons":
+                        case "lemon":
+                            SellLemons(player);
+                            madeSale = true;
+                            break;
+                        case "leave":
+                            return;
+                        default:
+                            Console.WriteLine("We dont carry that here, please select something that we have in stock");
+                            break;
+                    }
+                }
             }
+            Console.WriteLine("You have run out of money and no longer have enough supplies to keep going so you must shut down");
+            Console.WriteLine("Game Over");
+            Environment.Exit(0);
+
         }
 
         public void SellSugarCubes(Player player)

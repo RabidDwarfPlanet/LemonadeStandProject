@@ -22,7 +22,7 @@ namespace LemonadeStand
             iceCubes = new List<IceCube>();
             cups = new List<Cup>();
             AddLemonsToInventory(20);
-            AddSugarCubesToInventory(20);
+            AddSugarCubesToInventory(0);
             AddIceCubesToInventory(100);
             AddCupsToInventory(30);
         }

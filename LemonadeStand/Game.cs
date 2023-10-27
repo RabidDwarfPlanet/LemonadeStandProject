@@ -184,10 +184,18 @@ namespace LemonadeStand
                 Lemonade lemonade = new Lemonade();
                 player.pitcher.Add(lemonade);
             }
-        }   
-            
-            
-        
+        }
+
+
+        public void EndGame()
+        {
+            Console.Clear();
+            Console.WriteLine("You have made it through 7 days!!");
+            Console.WriteLine($"You ended with ${player.wallet.Money} but in total you made ${totalProfits}");
+            Console.WriteLine("Well done on your entrepreneurial endeavors!");
+            Console.WriteLine("Press anykey to end the game");
+            Console.ReadKey();
+        }
 
         public void DayCycle()
         {
@@ -208,8 +216,6 @@ namespace LemonadeStand
                 Console.WriteLine($"Today you made ${todaysProfits}");
                 Console.ReadKey();
                 day++;
-
-
             }
         }
     }

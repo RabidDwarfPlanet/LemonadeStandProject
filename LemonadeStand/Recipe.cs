@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.ExceptionServices;
@@ -48,33 +49,32 @@ namespace LemonadeStand
         public void ChangeRecipePrompt()
         {
             bool firstChange = true;
-            restart:
-            Console.Clear();
-            DisplayRecipe();
-            if(firstChange == true)
+            bool makingChanges = true;
+            while (makingChanges)
             {
-                Console.WriteLine("Would you like to change this recipe? (Y/N)");
-            }
-            else
-            {
-                Console.WriteLine("Would you like to change anything else (Y/N)");
-            }
-            retry:
-            string change = Console.ReadLine();
-            switch (change.ToLower())
-            {
-                case "yes":
-                case "y":
-                    Console.WriteLine("What part of the recipe would you like to change");
-                    ChangeRecipe(Console.ReadLine());
-                    firstChange = false;
-                    goto restart;
-                case "no":
-                case "n":
-                    break;
-                default:
-                    Console.WriteLine("That was not a valid option, please try again");
-                    goto retry;
+                Console.Clear();
+                DisplayRecipe();
+                if (firstChange == true) {Console.WriteLine("Would you like to change this recipe? (Y/N)");}
+                else {Console.WriteLine("Would you like to change anything else (Y/N)");}
+                while (makingChanges)
+                {
+                    string change = Console.ReadLine();
+                    switch (change.ToLower())
+                    {
+                        case "yes":
+                        case "y":
+                            Console.WriteLine("What part of the recipe would you like to change");
+                            ChangeRecipe(Console.ReadLine());
+                            firstChange = false;
+                            break;
+                        case "no":
+                        case "n":
+                            return;
+                        default:
+                            Console.WriteLine("That was not a valid option, please try again");
+                            break;
+                    }
+                }
             }
         }
 
@@ -118,7 +118,5 @@ namespace LemonadeStand
                     break;
             }
         }
-
-
     }
 }
