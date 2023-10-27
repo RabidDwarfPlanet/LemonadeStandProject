@@ -16,7 +16,10 @@ namespace LemonadeStand.WeatherTypes
             this.tempModifier = 0.9;
         }
 
-
+        public override void WeatherEffect()
+        {
+            Console.WriteLine("Its rather overcast today, hopefully it doesn't cool down too much");
+        }
     }
     
     

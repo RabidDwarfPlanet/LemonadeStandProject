@@ -16,6 +16,10 @@ namespace LemonadeStand.WeatherTypes
             this.tempModifier = 0.75;
         }
 
+        public override void WeatherEffect()
+        {
+            Console.WriteLine("Why did it have to rain today, it doesnt seem like many people are out");
+        }
 
     }
 }

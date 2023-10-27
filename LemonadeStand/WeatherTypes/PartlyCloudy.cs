@@ -16,6 +16,10 @@ namespace LemonadeStand.WeatherTypes
             this.tempModifier = 1;
         }
 
+        public override void WeatherEffect()
+        {
+            Console.WriteLine("There's a nice shade out today, what a perfect day to be outside");
+        }
 
     }
 }

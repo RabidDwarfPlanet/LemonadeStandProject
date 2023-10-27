@@ -16,5 +16,8 @@ namespace LemonadeStand.WeatherTypes
         static WeatherType() 
         { 
         }
+
+        public abstract void WeatherEffect();
+
     }
 }

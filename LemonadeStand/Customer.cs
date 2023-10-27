@@ -12,11 +12,9 @@ namespace LemonadeStand
         public Wallet wallet;
         Random rand = new Random();
         public double desire;
-        public double weatherModifier;
-        public double tempModifier;
-        public double iceModifier;
-        public bool tooMuchIce;
-        public bool tooLittleIce;
+        public double playerModifier;
+        bool tooMuchIce;
+        bool tooLittleIce;
 
         public Customer()
         {
@@ -24,10 +22,10 @@ namespace LemonadeStand
             wallet = new Wallet(rand.Next(7));
         }
 
-        public void reasonForNotPurchasing()
+        public void reasonForNotPurchasing(WeatherSystem weather)
         {
-            if(this.weatherModifier <= this.tempModifier && this.weatherModifier <= iceModifier) { Console.WriteLine("The weather today is just not good for lemonade"); }
-            else if(this.tempModifier <= this.weatherModifier && this.tempModifier <= this.iceModifier) { Console.WriteLine("Its not hot enough today for a cup of lemonade"); }
+            if(weather.daysWeather.weatherLemonadeDesireModifier <= weather.tempModifier && weather.daysWeather.weatherLemonadeDesireModifier <= this.playerModifier) { Console.WriteLine("The weather today is just not good for lemonade"); }
+            else if(weather.tempModifier <= weather.daysWeather.weatherLemonadeDesireModifier && weather.tempModifier <= this.playerModifier) { Console.WriteLine("Its not hot enough today for a cup of lemonade"); }
             else
             {
                 if(tooMuchIce == true) { Console.WriteLine("All the ice is going to water down the lemonade"); }
@@ -35,26 +33,24 @@ namespace LemonadeStand
             }
         }
 
-        public void setDesire(double tempurature, double weatherModifier, int ice)
+        public void setDesire(WeatherSystem weather, int ice)
         {
-            this.weatherModifier = weatherModifier;
-            this.desire *= weatherModifier;
-            this.tempModifier = tempurature / 75;
-            this.desire *= this.tempModifier;
-            this.iceModifier = 1;
+            this.desire *= weather.daysWeather.weatherLemonadeDesireModifier;
+            this.desire *= weather.tempModifier;
+            double iceModifier = 1;
             if(ice >= 8) {iceModifier -= 0.3; tooMuchIce = true; }
-            if(tempurature > 50 && tempurature <= 60)
+            if(weather.daysTemp > 50 && weather.daysTemp <= 60)
             {
                 if(ice == 0 || ice == 1) {iceModifier += 0.2;}
                 else{iceModifier -= 0.2; tooMuchIce = true; }
             }
-            else if(tempurature > 60 && tempurature <= 70)
+            else if(weather.daysTemp > 60 && weather.daysTemp <= 70)
             {
                 if (ice == 1 || ice == 2 || ice == 3) {iceModifier += 0.2;}
                 else if (ice > 1) {iceModifier -= 0.2; tooLittleIce = true; }
                 else {iceModifier -= 0.2; tooMuchIce = true; }
             }
-            else if (tempurature > 70 && tempurature <= 80)
+            else if (weather.daysTemp > 70 && weather.daysTemp <= 80)
             {
                 if (ice == 2 || ice == 3 || ice == 4) {iceModifier += 0.2;}
                 else if(ice > 2) {iceModifier -= 0.2; tooLittleIce = true; }
@@ -66,6 +62,7 @@ namespace LemonadeStand
                 else if (ice > 3) {iceModifier -= 0.2; tooLittleIce = true; }
                 else {iceModifier -= 0.2; tooMuchIce = true; }
             }
+            this.playerModifier = iceModifier;
             this.desire *= iceModifier;
         }
     }

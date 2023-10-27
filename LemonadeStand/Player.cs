@@ -14,6 +14,10 @@ namespace LemonadeStand
         public Wallet wallet;
         public Recipe recipe;
         public List<Item> pitcher = new List<Item>();
+        public double totalCosts;
+        public double todaysCosts;
+        public double totalProfits;
+        public double todaysProfits;
 
         // constructor (SPAWNER)
         public Player()

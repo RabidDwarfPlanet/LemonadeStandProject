@@ -10,6 +10,7 @@ namespace LemonadeStand
     internal class WeatherSystem
     {
         public double daysTemp;
+        public double tempModifier;
         Random rand = new Random();
         public WeatherType daysWeather;
         Sunny sunny = new Sunny();
@@ -43,11 +44,14 @@ namespace LemonadeStand
             }
 
             daysTemp = Math.Round(rand.Next(70, 91) * daysWeather.tempModifier);
+            tempModifier = daysTemp / 75;
         }
 
         public void forecast()
         {
             Console.WriteLine($"It looks like today is going to be {daysWeather.typeOfWeather}");
+            Console.WriteLine("\nPress any key to continue");
+            Console.ReadKey();
         }
     }
 }

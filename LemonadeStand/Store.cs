@@ -15,6 +15,7 @@ namespace LemonadeStand
         private double pricePerIceCube;
         private double pricePerCup;
 
+
         // constructor (SPAWNER)
         public Store()
         {
@@ -25,20 +26,7 @@ namespace LemonadeStand
         }
 
         // member methods (CAN DO)
-        public void SellLemons(Player player)
-        {
-            int lemonsToPurchase = UserInterface.GetNumberOfItems("lemons");
-            double transactionAmount = CalculateTransactionAmount(lemonsToPurchase, pricePerLemon);
-            if(player.wallet.Money >= transactionAmount)
-            {
-                
-                player.wallet.PayMoneyForItems(transactionAmount);
-                player.inventory.AddLemonsToInventory(lemonsToPurchase);
-                Console.WriteLine($"You have bought ${transactionAmount} worth of lemons");
-                Console.WriteLine("\nPress any key to continue");
-                Console.ReadKey();
-            }
-        }
+        
 
         public void DisplayStorePrices(Player player)
         {
@@ -97,6 +85,7 @@ namespace LemonadeStand
                             madeSale = true;
                             break;
                         case "leave":
+                            player.totalCosts += player.todaysCosts;
                             return;
                         default:
                             Console.WriteLine("We dont carry that here, please select something that we have in stock");
@@ -104,10 +93,27 @@ namespace LemonadeStand
                     }
                 }
             }
+            Console.Clear();
             Console.WriteLine("You have run out of money and no longer have enough supplies to keep going so you must shut down");
             Console.WriteLine("Game Over");
             Environment.Exit(0);
 
+        }
+
+        public void SellLemons(Player player)
+        {
+            int lemonsToPurchase = UserInterface.GetNumberOfItems("lemons");
+            double transactionAmount = CalculateTransactionAmount(lemonsToPurchase, pricePerLemon);
+            if (player.wallet.Money >= transactionAmount)
+            {
+
+                player.wallet.PayMoneyForItems(transactionAmount);
+                player.inventory.AddLemonsToInventory(lemonsToPurchase);
+                player.todaysCosts += transactionAmount;
+                Console.WriteLine($"You have bought ${transactionAmount} worth of lemons");
+                Console.WriteLine("\nPress any key to continue");
+                Console.ReadKey();
+            }
         }
 
         public void SellSugarCubes(Player player)
@@ -119,6 +125,7 @@ namespace LemonadeStand
                 
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddSugarCubesToInventory(sugarToPurchase);
+                player.todaysCosts += transactionAmount;
                 Console.WriteLine($"You have bought ${transactionAmount} worth of sugar");
                 Console.WriteLine("\nPress any key to continue");
                 Console.ReadKey();
@@ -134,6 +141,7 @@ namespace LemonadeStand
                 
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddIceCubesToInventory(iceCubesToPurchase);
+                player.todaysCosts += transactionAmount;
                 Console.WriteLine($"You have bought ${transactionAmount} worth of ice cubes");
                 Console.WriteLine("\nPress any key to continue");
                 Console.ReadKey();
@@ -149,6 +157,7 @@ namespace LemonadeStand
                 
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddCupsToInventory(cupsToPurchase);
+                player.todaysCosts += transactionAmount;
                 Console.WriteLine($"You have bought ${transactionAmount} worth of cups");
                 Console.WriteLine("\nPress any key to continue");
                 Console.ReadKey();

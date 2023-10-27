@@ -7,9 +7,11 @@
             
             Game game = new Game();
             
-            game.welcomeMessage();
-            game.NamePlayer();
-            game.DayCycle();
+            game.WelcomeMessage();
+            game.PlayerCount();
+            game.NamePlayers();
+            if (game.playerCount == 1) { game.SoloDayCycle(); }
+            else { game.MultiDayCycle(); }
             game.EndGame();
             
         }

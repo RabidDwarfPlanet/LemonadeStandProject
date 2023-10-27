@@ -15,5 +15,10 @@ namespace LemonadeStand.WeatherTypes
             this.weatherSpawnModifier = 1.5;
             this.tempModifier = 1.20;
         }
+
+        public override void WeatherEffect()
+        {
+            Console.WriteLine("The sun is really beating down, a perfect day for a nice drink");
+        }
     }
 }

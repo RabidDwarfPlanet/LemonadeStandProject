@@ -28,9 +28,9 @@ namespace LemonadeStand
         }
 
         //Member Methods (CAN DO)
-        public void DisplayRecipe()
+        public void DisplayRecipe(Player player)
         {
-            Console.WriteLine($"Your recipe currently consists of:\n{numberOfLemons} lemons per pitcher\n{numberOfSugarCubes} sugar cubes per pitcher\n{numberOfIceCubes} ice cubes per pitcher");
+            Console.WriteLine($"{player.name} your recipe currently consists of:\n{numberOfLemons} lemons per pitcher\n{numberOfSugarCubes} sugar cubes per pitcher\n{numberOfIceCubes} ice cubes per pitcher");
         }
 
         public void SetPrice()
@@ -46,14 +46,14 @@ namespace LemonadeStand
             this.price = value;
         }
 
-        public void ChangeRecipePrompt()
+        public void ChangeRecipePrompt(Player player)
         {
             bool firstChange = true;
             bool makingChanges = true;
             while (makingChanges)
             {
                 Console.Clear();
-                DisplayRecipe();
+                DisplayRecipe(player);
                 if (firstChange == true) {Console.WriteLine("Would you like to change this recipe? (Y/N)");}
                 else {Console.WriteLine("Would you like to change anything else (Y/N)");}
                 while (makingChanges)
